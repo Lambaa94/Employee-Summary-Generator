@@ -50,7 +50,7 @@ function makeEmployees() {
             message: "Which type of team member would you like to add?",
             name: "addMember",
             choices: ["Engineer", "Intern", "I don't want to add more members."],
-        }]).then(function(addMember) {
+        }]).then(function({addMember}) {
             if (addMember === "Engineer") {
                 inquirer.prompt([
                 {
@@ -66,15 +66,15 @@ function makeEmployees() {
                 {
                     type: "input",
                     message: "What is your engineer's email?",
-                    name: "engineersEmail"
+                    name: "engineerEmail"
                 },
                 {
                     type: "input",
                     message: "What is your engineer's GitHub?",
-                    name: "gitHub"
+                    name: "github"
                 },
                 ]).then(function (engineerAnswers) {
-                    const engineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerId, engineerAnswers.engineersEmail, engineerAnswers.github)
+                    const engineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerId, engineerAnswers.engineerEmail, engineerAnswers.github)
                     employees.push(engineer);
                     makeEmployees();
 
@@ -94,7 +94,7 @@ function makeEmployees() {
                 {
                     type: "input",
                     message: "What is your intern's email?",
-                    name: "internsEmail"
+                    name: "internEmail"
                 },
                 {
                     type: "input",
@@ -102,21 +102,21 @@ function makeEmployees() {
                     name: "school"
                 },
                 ]).then(function (internAnswers) {
-                    const intern = new Intern(internAnswers.internName, internAnswers.internId, internAnswers.internEmail, internAnswers.office)
+                    const intern = new Intern(internAnswers.internName, internAnswers.internId, internAnswers.internEmail, internAnswers.school)
                     employees.push(intern);
                     makeEmployees();
 
                 })
             } else {
-                console.log("Generating employees...")
+                console.log("Generating employees...");
                
                 const html = render(employees);
-
+                
                 fs.writeFile(outputPath, html, function (err) {
                     if (err) throw err;
                     console.log("Success!")
                 });
-            }
+            };
 
 
 
