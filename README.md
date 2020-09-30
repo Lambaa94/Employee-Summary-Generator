@@ -23,7 +23,7 @@ npm i
 
 *Below is a gif to show you how to create your team.*
 
-![Instructional-gif](cliGif.gif)
+![Instructional-gif](CLI.gif)
 
 *Below is a link to the repository.*
 
